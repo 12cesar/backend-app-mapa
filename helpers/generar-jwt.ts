@@ -1,6 +1,7 @@
+
 import jwt from 'jsonwebtoken';
 import { SECRETORPRIVATEKEY } from '../global/enviroment';
-const generarJWT = (id = '') =>{
+export const generarJWT = (id = '') =>{
     return new Promise((resolve, reject)=> {
         const payload = {id};
         jwt.sign(payload, SECRETORPRIVATEKEY, {
@@ -14,8 +15,4 @@ const generarJWT = (id = '') =>{
             }
         })
     })
-}
-
-module.exports = {
-    generarJWT
 }

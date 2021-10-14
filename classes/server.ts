@@ -16,7 +16,8 @@ export default class Server {
     private httpServer: http.Server;
     public routerPath: string;
     public usuariosPath: string;
-
+    public mensajesPath: string;
+    public authPath: string;
 
     private constructor() {
         
@@ -24,6 +25,8 @@ export default class Server {
         this.port = SERVER_PORT;
         this.routerPath = '/api/routers';
         this.usuariosPath = '/api/usuarios';
+        this.mensajesPath = '/api/mensajes';
+        this.authPath ='/api/auth';
         this.httpServer = new http.Server(this.app);
         this.io = require('socket.io')(this.httpServer,{
             cors: {
@@ -79,6 +82,8 @@ export default class Server {
     routes(){
         this.app.use(this.routerPath, require('../routes/router'));
         this.app.use(this.usuariosPath, require('../routes/usuarios'));
+        this.app.use(this.authPath, require('../routes/auth'));
+        this.app.use(this.mensajesPath, require('../routes/mensajes'));
     }
     start(callback: () => void) {
         this.httpServer.listen(this.port, callback);
