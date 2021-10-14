@@ -18,6 +18,9 @@ export default class Server {
     public usuariosPath: string;
     public mensajesPath: string;
     public authPath: string;
+    public comunicadoPath: string;
+    public clientePath: string;
+
 
     private constructor() {
         
@@ -27,6 +30,8 @@ export default class Server {
         this.usuariosPath = '/api/usuarios';
         this.mensajesPath = '/api/mensajes';
         this.authPath ='/api/auth';
+        this.comunicadoPath ='/api/comunicados';
+        this.clientePath = '/api/clientes';
         this.httpServer = new http.Server(this.app);
         this.io = require('socket.io')(this.httpServer,{
             cors: {
@@ -83,7 +88,9 @@ export default class Server {
         this.app.use(this.routerPath, require('../routes/router'));
         this.app.use(this.usuariosPath, require('../routes/usuarios'));
         this.app.use(this.authPath, require('../routes/auth'));
+        this.app.use(this.clientePath, require('../routes/clientes'));
         this.app.use(this.mensajesPath, require('../routes/mensajes'));
+        this.app.use(this.comunicadoPath, require('../routes/comunicados'));
     }
     start(callback: () => void) {
         this.httpServer.listen(this.port, callback);
