@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node dist/",
+    "build": "tsc -w",
     "postinstall": "tsc",
     "watch-ts":"tsc -w"
 
