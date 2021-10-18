@@ -2,10 +2,9 @@
   "name": "socket-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/",
-    "build": "tsc -p ."
+    "start": "node dist/index.js"
   },
   "author": "",
   "license": "ISC",
