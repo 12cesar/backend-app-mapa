@@ -83,6 +83,8 @@ export default class Server {
         this.app.use(cors({origin:true, credentials:true}));
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(express.json());
+        // Directorio publico
+        this.app.use(express.static('public'));
     }
     routes(){
         this.app.use(this.routerPath, require('../routes/router'));
